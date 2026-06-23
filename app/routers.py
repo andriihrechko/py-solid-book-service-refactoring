@@ -17,11 +17,14 @@ SERIALIZERS = {
     "xml": XMLSerializer
 }
 
+
 def get_displayer(display_type: str) -> BookDisplayer:
     return DISPLAYERS[display_type]()
 
+
 def get_printer(print_type: str) -> BookPrinter:
     return PRINTERS[print_type]()
+
 
 def get_serializer(serializer_type: str) -> BookSerializer:
     return SERIALIZERS[serializer_type]()
