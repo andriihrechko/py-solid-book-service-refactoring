@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from app.main import Book
+from app.book import Book
 
 
 class BookDisplayer(ABC):
@@ -9,11 +9,11 @@ class BookDisplayer(ABC):
         pass
 
 
-class ConsoleDisplayer(BookDisplay):
+class ConsoleDisplayer(BookDisplayer):
     def display(self, book: Book) -> None:
         print(book.content)
 
 
-class ReverseDisplayer(BookDisplay):
+class ReverseDisplayer(BookDisplayer):
     def display(self, book: Book) -> None:
         print(book.content[::-1])
