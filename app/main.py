@@ -1,19 +1,13 @@
 import json
 import xml.etree.ElementTree as ET
 
+from app.display import BookDisplay
+
 
 class Book:
     def __init__(self, title: str, content: str):
         self.title = title
         self.content = content
-
-    def display(self, display_type: str) -> None:
-        if display_type == "console":
-            print(self.content)
-        elif display_type == "reverse":
-            print(self.content[::-1])
-        else:
-            raise ValueError(f"Unknown display type: {display_type}")
 
     def print_book(self, print_type: str) -> None:
         if print_type == "console":
@@ -39,10 +33,14 @@ class Book:
             raise ValueError(f"Unknown serialize type: {serialize_type}")
 
 
-def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
+def main(
+        book: Book,
+        commands: list[tuple[str, str]],
+        displayer: BookDisplay = None
+) -> None | str:
     for cmd, method_type in commands:
         if cmd == "display":
-            book.display(method_type)
+            displayer.display(book.content)
         elif cmd == "print":
             book.print_book(method_type)
         elif cmd == "serialize":
@@ -51,4 +49,8 @@ def main(book: Book, commands: list[tuple[str, str]]) -> None | str:
 
 if __name__ == "__main__":
     sample_book = Book("Sample Book", "This is some sample content.")
-    print(main(sample_book, [("display", "reverse"), ("serialize", "xml")]))
+    print(main(
+        sample_book,
+        [("display", "reverse"), ("serialize", "xml")],
+        displayer
+    ))
