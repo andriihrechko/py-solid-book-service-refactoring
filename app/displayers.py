@@ -5,7 +5,7 @@ from app.main import Book
 
 class BookDisplayer(ABC):
     @abstractmethod
-    def display(self, content: str) -> None:
+    def display(self, book: Book) -> None:
         pass
 
 

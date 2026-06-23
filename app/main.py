@@ -36,7 +36,6 @@ class Book:
 def main(
         book: Book,
         commands: list[tuple[str, str]],
-        displayer: BookDisplay = None
 ) -> None | str:
     for cmd, method_type in commands:
         if cmd == "display":
@@ -52,5 +51,4 @@ if __name__ == "__main__":
     print(main(
         sample_book,
         [("display", "reverse"), ("serialize", "xml")],
-        displayer
     ))
