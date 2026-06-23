@@ -1,4 +1,5 @@
-from book import Book
+from app.routers import get_displayer, get_printer, get_serializer
+from app.book import Book
 
 
 def main(
@@ -7,11 +8,11 @@ def main(
 ) -> None | str:
     for cmd, method_type in commands:
         if cmd == "display":
-            displayer.display(book.content)
+            get_displayer(method_type).display(book)
         elif cmd == "print":
-            book.print_book(method_type)
+            get_printer(method_type).print_book(book)
         elif cmd == "serialize":
-            return book.serialize(method_type)
+            return get_serializer(method_type).serialize(book)
     return None
 
 
