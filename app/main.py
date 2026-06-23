@@ -1,7 +1,7 @@
 import json
 import xml.etree.ElementTree as ET
 
-from app.display import BookDisplay
+from app.displayers import BookDisplay
 
 
 class Book:
